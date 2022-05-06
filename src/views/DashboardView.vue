@@ -33,7 +33,7 @@ export default {
             Authorization: "Bearer " + localStorage.getItem("user-token"),
           },
         });
-        this.$store.commit("updateTweets", response?.data?.data?.posts);
+        this.$store.dispatch("updateTweets", response?.data?.data?.posts);
         this.tweets = response?.data?.data?.posts || [];
       } catch (error) {
         console.log("Error", error);

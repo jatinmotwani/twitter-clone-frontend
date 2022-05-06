@@ -9,7 +9,16 @@ export default new Vuex.Store({
       fullName: "",
       email: "",
     },
-    tweets: [],
+    tweets: [
+      {
+        author: "James",
+        content: "Had a great time with team !ß",
+      },
+      {
+        author: "Rishi",
+        content: "This is my first tweet !",
+      },
+    ],
   },
   getters: {},
   mutations: {
@@ -21,6 +30,13 @@ export default new Vuex.Store({
       state.tweets = tweets;
     },
   },
-  actions: {},
+  actions: {
+    updateUser(context, userData) {
+      context.commit("updateUser", userData);
+    },
+    updateTweets(context, tweets) {
+      context.commit("updateTweets", tweets);
+    },
+  },
   modules: {},
 });

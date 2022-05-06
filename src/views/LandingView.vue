@@ -51,7 +51,7 @@ export default {
           userData
         );
         localStorage.setItem("user-token", response?.data?.data?.token);
-        this.$store.commit("updateUser", response?.data?.data?.user);
+        this.$store.dispatch("updateUser", response?.data?.data?.user);
         this.$router.push("/dashboard");
       } catch (error) {
         localStorage.removeItem("user-token");
@@ -65,7 +65,7 @@ export default {
           userData
         );
         localStorage.setItem("user-token", response?.data?.data?.token);
-        this.$store.commit("updateUser", response?.data?.data?.user);
+        this.$store.dispatch("updateUser", response?.data?.data?.user);
         this.$router.push("/dashboard");
       } catch (error) {
         localStorage.removeItem("user-token");

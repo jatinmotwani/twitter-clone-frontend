@@ -63,10 +63,20 @@
       <span class="navitem-icon">
         <i
           class="fas fa-lock mx-2 h-12 w-auto text-3xl text-gray-500 hover:text-gray-800 cursor-pointer"
-          @click="logout"
+          @click="toggleLogoutModal()"
         ></i>
       </span>
     </div>
+    <div
+      v-if="showLogoutModal"
+      class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex"
+    >
+      <confirm-logout-component :toggleLogoutModal="toggleLogoutModal" />
+    </div>
+    <div
+      v-if="showLogoutModal"
+      class="opacity-25 fixed inset-0 z-40 bg-black"
+    ></div>
     <div>
       <span class="navitem-icon">
         <i
@@ -79,24 +89,26 @@
 
 <script>
 import ProfileComponent from "./Profile.vue";
+import ConfirmLogoutComponent from "./ConfirmLogout.vue";
 export default {
   name: "SidebarComponent",
   data() {
     return {
       showModal: false,
+      showLogoutModal: false,
     };
   },
   methods: {
     toggleModal: function () {
       this.showModal = !this.showModal;
     },
-    logout: function () {
-      localStorage.removeItem("user-token");
-      this.$router.push("/");
+    toggleLogoutModal: function () {
+      this.showLogoutModal = !this.showLogoutModal;
     },
   },
   components: {
     ProfileComponent,
+    ConfirmLogoutComponent,
   },
 };
 </script>
